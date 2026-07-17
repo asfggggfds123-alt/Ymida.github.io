@@ -499,7 +499,7 @@
             text-decoration: underline;
         }
 
-        /* ===== АНИМИРОВАННАЯ ПЛАШКА (фиксированная слева снизу) ===== */
+        /* ===== АНИМИРОВАННАЯ ПЛАШКА (фиксированная справа снизу) ===== */
         .social-float {
             position: fixed;
             bottom: 24px;
@@ -548,7 +548,7 @@
             flex-direction: column;
             align-items: stretch;
             gap: 0;
-            transform-origin: bottom left;
+            transform-origin: bottom right;
         }
         .social-dropdown.open {
             max-height: 300px;
@@ -631,7 +631,7 @@
             }
             .social-float {
                 bottom: 16px;
-                left: 16px;
+                right: 16px;
             }
             .social-toggle {
                 padding: 12px 20px;
@@ -726,25 +726,23 @@
     </section>
 
     <!-- ===== КОНТАКТЫ ===== -->
-
     <section class="section section-light" id="contact">
         <div class="container">
             <h2 class="anim" id="contact-title">Свяжитесь с нами</h2>
             <div class="contact-wrapper">
                 <div class="contact-info anim-left">
                     <p id="contact-subtitle">Оставьте заявку через форму, или выберите удобный мессенджер ниже.</p>
-                    
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span id="contact-address">г. Москва, ул. Тверская, д. 1, оф. 405</span>
+                        <span id="contact-address">Республика Татарстан, г. Набережные Челны, пр-т Чулпан, д. 50, ТЦ Plazma, 2 эт. офис 3</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <span id="contact-phone">+7 (999) 123-45-67</span>
+                        <span id="contact-phone">+7 (906) 322-93-33</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span id="contact-email">info@umida.ru</span>
+                        <span id="contact-email">Umida.centr@gmail.com</span>
                     </div>
                 </div>
                 <form class="contact-form anim-right" id="contactForm" method="POST">
@@ -897,7 +895,7 @@
             });
         });
 
-        // ===== FORM SUBMIT =====
+        // ===== НОВЫЙ ОБРАБОТЧИК ФОРМЫ (через FormSubmit) =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
@@ -909,30 +907,41 @@
             btn.disabled = true;
             btn.textContent = 'Отправка...';
 
-            fetch('send.php', {
+            fetch('https://formsubmit.co/ajax/Umida.centr@gmail.com', {
                     method: 'POST',
-                    body: new FormData(form)
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: document.getElementById('form-name').value,
+                        email: document.getElementById('form-email').value,
+                        phone: document.getElementById('form-phone').value,
+                        message: document.getElementById('form-message').value
+                    })
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) throw new Error('Ошибка сети');
+                    return response.json();
+                })
                 .then(data => {
-                    if (data.success) {
+                    if (data.success === 'true' || data.message) {
                         status.className = 'success';
                         status.textContent = '✅ Заявка отправлена! Мы свяжемся с вами.';
                         form.reset();
                     } else {
-                        status.className = 'error';
-                        status.textContent = '❌ Ошибка: ' + (data.message || 'попробуйте позже.');
+                        throw new Error('Не удалось отправить');
                     }
-                    status.style.display = 'block';
                 })
-                .catch(() => {
+                .catch((error) => {
                     status.className = 'error';
-                    status.textContent = '❌ Ошибка соединения. Проверьте интернет.';
-                    status.style.display = 'block';
+                    status.textContent = '❌ Ошибка: ' + error.message + '. Попробуйте позже.';
+                    console.error('FormSubmit error:', error);
                 })
                 .finally(() => {
                     btn.disabled = false;
                     btn.textContent = siteContent.contacts.form.button;
+                    status.style.display = 'block';
                 });
         });
     </script>
