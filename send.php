@@ -1,11 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-// ========== НАСТРОЙКИ (замените на свои) ==========
-$to_email = 'asfggggfds123@gmail.com';
-$telegram_token = '1234567890:ABCdefGHIjklMNOpqrsTUVwxyz';
-$telegram_chat_id = '123456789';
-// ... остальные настройки (WhatsApp, VK) по желанию
+// ========== НАСТРОЙКИ ==========
+$to_email = 'Umida.centr@gmail.com'; // ← ВАША ПОЧТА
+
 // =================================================
 
 $name = trim($_POST['name'] ?? '');

@@ -41,9 +41,7 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             letter-spacing: 0.02em;
@@ -119,19 +117,10 @@
             opacity: 1;
             transform: translateX(0);
         }
-        /* задержки для карточек */
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-        .delay-3 {
-            transition-delay: 0.3s;
-        }
-        .delay-4 {
-            transition-delay: 0.4s;
-        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
         /* ===== ШАПКА ===== */
         header {
@@ -153,12 +142,6 @@
             display: inline-block;
             text-decoration: none;
             line-height: 1;
-        }
-        .logo-img {
-            display: block;
-            height: 50px;
-            width: auto;
-            max-height: 60px;
         }
         .logo-text {
             font-family: 'Playfair Display', serif;
@@ -221,12 +204,8 @@
             pointer-events: none;
         }
         @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .hero-content {
             display: grid;
@@ -263,13 +242,8 @@
             animation: float 6s ease-in-out infinite;
         }
         @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         /* ===== О НАС ===== */
@@ -400,7 +374,7 @@
             font-size: 14px;
         }
 
-        /* ===== ЦИТАТА / ОТЗЫВ ===== */
+        /* ===== ЦИТАТА ===== */
         .quote-block {
             background: var(--white);
             padding: 60px 40px;
@@ -525,7 +499,89 @@
             text-decoration: underline;
         }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
+        /* ===== АНИМИРОВАННАЯ ПЛАШКА (фиксированная слева снизу) ===== */
+        .social-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            margin: 0;
+            text-align: left;
+        }
+        .social-toggle {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .social-toggle:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 169, 110, 0.45);
+        }
+        .social-toggle i {
+            font-size: 20px;
+        }
+        .social-dropdown {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+            padding: 0;
+            min-width: 200px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            transform-origin: bottom left;
+        }
+        .social-dropdown.open {
+            max-height: 300px;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            padding: 8px 0;
+        }
+        .social-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            transition: background 0.2s;
+        }
+        .social-dropdown a:hover {
+            background: rgba(201, 169, 110, 0.10);
+            color: var(--gold);
+        }
+        .social-dropdown a i {
+            font-size: 20px;
+            color: var(--gold);
+            width: 28px;
+            text-align: center;
+        }
+
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -550,7 +606,6 @@
                 flex-direction: column;
                 gap: 16px;
             }
-
             nav {
                 gap: 18px;
                 flex-wrap: wrap;
@@ -566,13 +621,25 @@
                 padding: 60px 0;
             }
             .hero {
-                padding-top: 80px; /* или 90px, чтобы компенсировать высоту шапки */
+                min-height: 70vh;
             }
             .quote-block {
                 padding: 40px 20px;
             }
             .quote-block blockquote {
                 font-size: 22px;
+            }
+            .social-float {
+                bottom: 16px;
+                left: 16px;
+            }
+            .social-toggle {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+            .social-dropdown {
+                min-width: 170px;
+                bottom: 60px;
             }
         }
     </style>
@@ -584,8 +651,6 @@
         <div class="container header-inner">
             <a href="#" class="logo" id="logo">
                 <span class="logo-text">ЮМИДА</span>
-                <!-- если есть картинка, раскомментировать и убрать текст -->
-                <!-- <img src="images/logo.png" alt="Юмида" class="logo-img"> -->
             </a>
             <nav>
                 <a href="#about">О нас</a>
@@ -637,9 +702,7 @@
     <section class="section section-dark" id="services">
         <div class="container">
             <h2 class="anim" id="services-title">Наши услуги</h2>
-            <div class="services-grid" id="services-grid">
-                <!-- карточки генерируются из JS -->
-            </div>
+            <div class="services-grid" id="services-grid"></div>
         </div>
     </section>
 
@@ -647,9 +710,7 @@
     <section class="section section-light" id="advantages">
         <div class="container">
             <h2 class="anim" id="advantages-title">Почему выбирают нас</h2>
-            <div class="advantages-grid" id="advantages-grid">
-                <!-- генерируется из JS -->
-            </div>
+            <div class="advantages-grid" id="advantages-grid"></div>
         </div>
     </section>
 
@@ -665,12 +726,14 @@
     </section>
 
     <!-- ===== КОНТАКТЫ ===== -->
+
     <section class="section section-light" id="contact">
         <div class="container">
             <h2 class="anim" id="contact-title">Свяжитесь с нами</h2>
             <div class="contact-wrapper">
                 <div class="contact-info anim-left">
-                    <p id="contact-subtitle">Оставьте заявку, и мы перезвоним в течение 30 минут.</p>
+                    <p id="contact-subtitle">Оставьте заявку через форму, или выберите удобный мессенджер ниже.</p>
+                    
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <span id="contact-address">г. Москва, ул. Тверская, д. 1, оф. 405</span>
@@ -705,22 +768,26 @@
         </div>
     </footer>
 
+    <!-- ===== ФИКСИРОВАННАЯ ПЛАШКА ===== -->
+    <div class="social-float">
+        <button class="social-toggle" id="socialToggle">
+            <i class="fas fa-comment-dots"></i> Написать нам
+        </button>
+        <div class="social-dropdown" id="socialDropdown"></div>
+    </div>
+
     <!-- ===== ПОДКЛЮЧАЕМ КОНТЕНТ ===== -->
     <script src="content.js"></script>
     <script>
-        // ===== ЗАГРУЗКА ДАННЫХ =====
         document.addEventListener('DOMContentLoaded', function() {
             const C = siteContent;
-
-            // Логотип (если используете текст, оставьте как есть)
-            // Если используете картинку, замените innerHTML на img
 
             // Hero
             document.getElementById('hero-title').innerHTML = C.hero.title;
             document.getElementById('hero-desc').textContent = C.hero.description;
             document.getElementById('hero-btn').textContent = C.hero.button;
 
-            // О нас
+            // About
             document.getElementById('about-title').textContent = C.about.title;
             document.getElementById('about-text').textContent = C.about.text;
             const pointsList = document.getElementById('about-points');
@@ -732,7 +799,7 @@
             });
             document.getElementById('about-signature').textContent = C.about.signature;
 
-            // Услуги
+            // Services
             document.getElementById('services-title').textContent = C.services.title;
             const servicesGrid = document.getElementById('services-grid');
             servicesGrid.innerHTML = '';
@@ -751,7 +818,7 @@
                 servicesGrid.appendChild(card);
             });
 
-            // Преимущества
+            // Advantages
             document.getElementById('advantages-title').textContent = C.advantages.title;
             const advGrid = document.getElementById('advantages-grid');
             advGrid.innerHTML = '';
@@ -770,13 +837,13 @@
                 advGrid.appendChild(div);
             });
 
-            // Цитата
+            // Quote
             if (C.quote) {
                 document.getElementById('quote-text').textContent = C.quote.text;
                 document.getElementById('quote-author').textContent = C.quote.author;
             }
 
-            // Контакты
+            // Contacts
             document.getElementById('contact-title').textContent = C.contacts.title;
             document.getElementById('contact-subtitle').textContent = C.contacts.subtitle;
             document.getElementById('contact-address').textContent = C.contacts.address;
@@ -787,11 +854,9 @@
             document.getElementById('form-phone').placeholder = C.contacts.form.phone;
             document.getElementById('form-message').placeholder = C.contacts.form.message;
             document.getElementById('form-submit').textContent = C.contacts.form.button;
-
-            // Подвал
             document.getElementById('footer-text').textContent = C.footer;
 
-            // ===== АНИМАЦИИ ПРИ СКРОЛЛЕ (Intersection Observer) =====
+            // Animations on scroll
             const animElements = document.querySelectorAll('.anim, .anim-left, .anim-right');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -801,9 +866,38 @@
                 });
             }, { threshold: 0.15 });
             animElements.forEach(el => observer.observe(el));
+
+            // ===== SOCIAL DROPDOWN =====
+            const socialToggle = document.getElementById('socialToggle');
+            const socialDropdown = document.getElementById('socialDropdown');
+
+            const socials = C.socials || [];
+            socialDropdown.innerHTML = '';
+            socials.forEach(item => {
+                const a = document.createElement('a');
+                a.href = item.link;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.innerHTML = `<i class="${item.icon}"></i> ${item.name}`;
+                socialDropdown.appendChild(a);
+            });
+
+            socialToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                socialDropdown.classList.toggle('open');
+                const icon = this.querySelector('i');
+                icon.className = socialDropdown.classList.contains('open') ? 'fas fa-times' : 'fas fa-comment-dots';
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.social-float')) {
+                    socialDropdown.classList.remove('open');
+                    socialToggle.querySelector('i').className = 'fas fa-comment-dots';
+                }
+            });
         });
 
-        // ===== ОТПРАВКА ФОРМЫ (AJAX) =====
+        // ===== FORM SUBMIT =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
