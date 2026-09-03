@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Юридические услуги в Набережных Челнах и Татарстане — правовой центр «Юмида»</title>
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="apple-touch-icon" href="favicon.png?v=3" />
@@ -78,7 +78,7 @@
             --shadow: 0 14px 40px rgba(143, 100, 28, 0.16);
             --border-light: rgba(143, 100, 28, 0.14);
         }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         body {
             font-family: 'Inter', sans-serif;
             background:
@@ -89,7 +89,9 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            max-width: 100%;
         }
+        img, svg, video { max-width: 100%; height: auto; }
         body::before {
             content: '';
             position: fixed;
@@ -100,7 +102,7 @@
             background-image: repeating-linear-gradient(-18deg, #8f641c 0 1px, transparent 1px 12px);
         }
         .hero, .section, footer, .copy-toast { position: relative; z-index: 1; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
@@ -365,7 +367,9 @@
             width: 100%;
             position: relative;
             z-index: 2;
+            min-width: 0;
         }
+        .hero-text, .hero-visual { min-width: 0; max-width: 100%; }
         .hero-kicker {
             font-size: 15px;
             font-weight: 600;
@@ -511,7 +515,7 @@
 
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -571,7 +575,7 @@
         .about-block li { margin-bottom: 8px; }
         .principles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
             gap: 24px;
             margin-top: 24px;
         }
@@ -628,7 +632,7 @@
         .case-card p { margin-bottom: 16px; }
         .cta-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
             gap: 16px;
             margin-top: 24px;
         }
@@ -648,12 +652,11 @@
             font-size: 20px;
             margin-bottom: 12px;
         }
-        .table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: var(--shadow); }
+        .table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: var(--shadow); max-width: 100%; }
         table.price-table {
             width: 100%;
             border-collapse: collapse;
             background: var(--white);
-            min-width: 480px;
         }
         .price-table th, .price-table td {
             padding: 14px 20px;
@@ -722,10 +725,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             margin-top: 40px;
+            min-width: 0;
         }
+        .contact-wrapper > * { min-width: 0; }
         .contact-info { display: flex; flex-direction: column; gap: 24px; }
         .contact-info p { color: var(--text-secondary); font-size: 17px; }
-        .contact-item { display: flex; align-items: center; gap: 16px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
         .contact-item i {
             width: 48px;
             height: 48px;
@@ -738,10 +743,20 @@
             font-size: 20px;
             flex-shrink: 0;
         }
-        .contact-item a, .contact-item span, .contact-item .copy-phone { font-size: 17px; color: var(--text-primary); text-decoration: none; }
+        .contact-item a, .contact-item span, .contact-item .copy-phone {
+            font-size: 17px;
+            color: var(--text-primary);
+            text-decoration: none;
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
         .contact-item a:hover { color: var(--gold); }
-        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .contact-form { display: flex; flex-direction: column; gap: 20px; width: 100%; min-width: 0; }
         .contact-form input, .contact-form textarea {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
             padding: 16px 20px;
             border-radius: 12px;
             border: 1px solid #e0d6c8;
@@ -757,6 +772,7 @@
             box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.15);
         }
         .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form .btn-primary { width: 100%; max-width: 100%; }
         .form-status { margin-top: 8px; font-weight: 500; display: none; }
         .form-status.success { display: block; color: #2d7a4a; }
         .form-status.error { display: block; color: #c0392b; }
@@ -840,6 +856,8 @@
             border-radius: 24px;
             padding: 48px 40px 40px;
             box-shadow: 0 18px 50px rgba(143, 100, 28, 0.16);
+            max-width: 100%;
+            min-width: 0;
         }
         .block-panel::before, .block-panel::after {
             content: '';
@@ -895,7 +913,9 @@
             grid-template-columns: 280px 1fr;
             gap: 36px;
             align-items: start;
+            min-width: 0;
         }
+        .prices-layout > * { min-width: 0; }
         .prices-side { position: sticky; top: 100px; }
         .prices-side .img-tile { margin-bottom: 20px; }
         .team-grid {
@@ -1022,7 +1042,10 @@
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.45;
+            max-width: 100%;
+            min-width: 0;
         }
+        .consent span { min-width: 0; overflow-wrap: anywhere; }
         .consent input { margin-top: 3px; accent-color: var(--gold); }
         .consent a { color: var(--gold); }
         .footer-docs { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; }
@@ -1097,8 +1120,8 @@
             .hero-text p, .hero-sub, .highlight { margin-left: auto; margin-right: auto; }
             .hero-kicker { display: block; }
             .hero-actions { justify-content: center; }
-            .hero-visual { min-height: auto; max-width: 520px; margin: 0 auto; }
-            .contact-wrapper { grid-template-columns: 1fr; }
+            .hero-visual { min-height: auto; max-width: min(520px, 100%); margin: 0 auto; width: 100%; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
             .prices-layout, .team-grid { grid-template-columns: 1fr; }
             .prices-side { position: static; }
             h2::after, .category-title::after, .about-block h3::after { margin-left: auto; margin-right: auto; }
@@ -1117,32 +1140,95 @@
                 top: 100%;
                 left: 0;
                 right: 0;
+                width: auto;
+                max-width: none;
+                transform: none;
                 background: rgba(234, 217, 192, 0.98);
                 flex-direction: column;
                 align-items: stretch;
-                padding: 16px 24px 24px;
+                padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
                 gap: 16px;
                 border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-sizing: border-box;
             }
             .header-right.open { display: flex; }
             nav { flex-direction: column; align-items: flex-start; gap: 14px; }
-            .header-messengers { justify-content: flex-start; }
+            .header-messengers { justify-content: flex-start; flex-wrap: wrap; }
+            .header-phone { white-space: normal; }
         }
         @media (max-width: 900px) {
             .services-grid { grid-template-columns: 1fr 1fr; }
         }
-        @media (max-width: 600px) {
-            .hero-text h1 { font-size: 32px; }
-            .hero-sub { font-size: 18px; }
-            h2 { font-size: 30px; }
-            .section { padding: 60px 0; }
-            .hero { min-height: auto; padding: 48px 0; }
-            .social-float { bottom: 16px; right: 16px; }
-            .social-toggle { padding: 12px 20px; font-size: 15px; }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .header-inner { padding-right: 56px; gap: 12px; min-height: 56px; }
+            .logo img { height: 48px; }
+            .nav-toggle { top: max(10px, env(safe-area-inset-top, 0px)); right: 12px; }
+            .hero { min-height: auto; padding: 36px 0 28px; }
+            .hero-text h1 { font-size: 28px; }
+            .hero-sub { font-size: 17px; }
+            .hero-text p { font-size: 16px; }
+            h2 { font-size: 28px; }
+            .highlight { font-size: 16px; padding-left: 12px; margin-bottom: 20px; }
+            .section { padding: 48px 0; }
+            .block-panel { padding: 24px 14px 18px; border-radius: 18px; }
+            .block-panel::before, .block-panel::after { display: none; }
             .slides-row, .services-grid { grid-template-columns: 1fr; }
-            .team-photo { height: 400px; }
-            .case-card { padding: 24px 18px; }
-            .logo img { height: 52px; }
+            .service-card { min-height: 0; padding: 22px 18px 20px; }
+            .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
+            .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+            .btn-primary { padding: 14px 20px; }
+            .price-table th, .price-table td { padding: 10px 12px; font-size: 13px; }
+            .price-table td:last-child, .price-table th:last-child { white-space: normal; }
+            .about-block h3 { font-size: 22px; }
+            .faq-item { padding: 6px 14px; }
+            .faq-item summary { font-size: 15px; }
+            .team-photo { height: 340px; }
+            .case-card { padding: 20px 16px; }
+            .promo h3 { font-size: 20px; }
+            .contact-item i { width: 40px; height: 40px; font-size: 16px; }
+            .contact-item a, .contact-item span, .contact-item .copy-phone { font-size: 15px; }
+            .lead-modal {
+                padding: 12px;
+                align-items: flex-start;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .lead-modal-dialog {
+                width: 100%;
+                padding: 28px 16px 16px;
+                max-height: none;
+                border-radius: 16px;
+            }
+            .lead-modal-dialog h2 { font-size: 24px; }
+            .social-float {
+                bottom: max(12px, env(safe-area-inset-bottom, 0px));
+                right: 12px;
+            }
+            .social-toggle { padding: 12px 14px; font-size: 14px; }
+            .copy-toast {
+                max-width: calc(100% - 24px);
+                left: 50%;
+                bottom: 88px;
+                text-align: center;
+            }
+            footer { padding: 32px 0 96px; }
+            .footer-docs { flex-direction: column; align-items: center; gap: 10px; }
+            .anim-left, .anim-right { transform: translateY(20px); }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 12px; }
+            .hero-text h1 { font-size: 24px; line-height: 1.2; }
+            h2 { font-size: 24px; }
+            .logo img { height: 44px; }
+            .block-panel { padding: 20px 12px 16px; }
+            .geo-list span { font-size: 13px; padding: 6px 12px; }
+            .contact-form input, .contact-form textarea { padding: 14px 14px; }
+        }
+        @media (hover: none) {
+            .service-card:hover, .team-card:hover, .advantage-item:hover, .btn-primary:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -1169,7 +1255,7 @@
                     <a href="https://max.ru/u/f9LHodD0cOLXxyk2r3Dbf8MwTvXlQ-OnUwMfm3aunht6aWm54ycBamaEMI4" target="_blank" rel="noopener noreferrer" title="MAX" aria-label="MAX"><i class="fas fa-comment-dots"></i></a>
                     <a href="https://t.me/Umidacentr" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                     <a href="https://wa.me/79063229333" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://vk.com/yumida" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://vk.ru/club240774245" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
                 </div>
             </div>
         </div>
@@ -1640,7 +1726,7 @@
         <div class="social-dropdown" id="socialDropdown"></div>
     </div>
 
-    <script src="content.js"></script>
+    <script src="content.js?v=4"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const animElements = document.querySelectorAll('.anim, .anim-left, .anim-right');
