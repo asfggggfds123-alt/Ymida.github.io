@@ -315,7 +315,7 @@
             min-height: 88vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f4e4c8 0%, #e2c48a 48%, #cba35a 100%);
+            background: linear-gradient(180deg, #e8c98a 0%, #f0dcc0 48%, #f8f1e4 100%);
             position: relative;
             overflow: hidden;
             padding: 80px 0;
@@ -338,7 +338,7 @@
             right: auto;
             width: 520px;
             height: 520px;
-            background: radial-gradient(circle, rgba(143, 100, 28, 0.22) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 252, 246, 0.8) 0%, transparent 70%);
             animation: rotate 22s linear infinite reverse;
         }
         .hero-spark {
@@ -903,10 +903,13 @@
             animation: kenburns 18s ease-in-out infinite;
         }
         .img-tile:hover img { animation-play-state: paused; }
-        .hero-visual { position: relative; }
-        .hero-visual .img-tile {
-            aspect-ratio: 3 / 2;
-            box-shadow: 0 18px 40px rgba(44, 51, 64, 0.12);
+        .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+        .hero-logo {
+            width: min(100%, 480px);
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 24px rgba(143, 100, 28, 0.16));
         }
         .prices-layout {
             display: grid;
@@ -920,7 +923,7 @@
         .prices-side .img-tile { margin-bottom: 20px; }
         .team-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 28px;
             margin: 28px 0 12px;
         }
@@ -937,7 +940,7 @@
             box-shadow: 0 22px 44px rgba(143, 100, 28, 0.22);
         }
         .team-photo {
-            height: 460px;
+            height: 420px;
             overflow: hidden;
             background: #cfd0d2;
         }
@@ -947,11 +950,12 @@
             object-fit: cover;
             display: block;
         }
-        .team-photo-a img { object-position: center 8%; }
-        .team-photo-b img { object-position: center 18%; }
-        .team-meta { padding: 20px 22px 24px; }
-        .team-meta h4 { font-family: 'Inter', sans-serif; font-size: 18px; margin-bottom: 4px; }
-        .team-meta p { color: var(--text-secondary); font-size: 14px; margin: 0; }
+        .team-photo-a img { object-position: center 18%; }
+        .team-photo-b img { object-position: center 12%; }
+        .team-photo-c img { object-position: center 14%; }
+        .team-meta { padding: 20px 18px 22px; }
+        .team-meta h4 { font-family: 'Inter', sans-serif; font-size: 17px; margin-bottom: 6px; }
+        .team-meta p { color: var(--text-secondary); font-size: 14px; margin: 0; line-height: 1.45; }
         .copy-phone {
             background: none;
             border: none;
@@ -1120,9 +1124,9 @@
             .hero-text p, .hero-sub, .highlight { margin-left: auto; margin-right: auto; }
             .hero-kicker { display: block; }
             .hero-actions { justify-content: center; }
-            .hero-visual { min-height: auto; max-width: min(520px, 100%); margin: 0 auto; width: 100%; }
+            .hero-visual { min-height: auto; max-width: min(420px, 100%); margin: 0 auto; width: 100%; }
             .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-            .prices-layout, .team-grid { grid-template-columns: 1fr; }
+            .prices-layout { grid-template-columns: 1fr; }
             .prices-side { position: static; }
             h2::after, .category-title::after, .about-block h3::after { margin-left: auto; margin-right: auto; }
             h2, .category-title, .about-block h3 { display: block; text-align: center; }
@@ -1158,6 +1162,7 @@
         }
         @media (max-width: 900px) {
             .services-grid { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
@@ -1173,7 +1178,7 @@
             .section { padding: 48px 0; }
             .block-panel { padding: 24px 14px 18px; border-radius: 18px; }
             .block-panel::before, .block-panel::after { display: none; }
-            .slides-row, .services-grid { grid-template-columns: 1fr; }
+            .slides-row, .services-grid, .team-grid { grid-template-columns: 1fr; }
             .service-card { min-height: 0; padding: 22px 18px 20px; }
             .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
             .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; justify-content: center; }
@@ -1219,6 +1224,7 @@
         @media (max-width: 480px) {
             .container { padding: 0 12px; }
             .hero-text h1 { font-size: 24px; line-height: 1.2; }
+            .hero-logo { width: min(100%, 280px); }
             h2 { font-size: 24px; }
             .logo img { height: 44px; }
             .block-panel { padding: 20px 12px 16px; }
@@ -1295,9 +1301,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <figure class="img-tile">
-                    <img src="images/legal-scales.jpg" alt="Весы правосудия — правовой центр Юмида" />
-                </figure>
+                <img class="hero-logo" src="logo-hero.png" alt="Правовой центр Юмида" />
             </div>
         </div>
     </section>
@@ -1569,17 +1573,24 @@
             <p class="highlight">Закон должен работать на людей, а не против них.</p>
             <div class="team-grid">
                     <article class="team-card">
-                        <div class="team-photo team-photo-a"><img src="images/team-1.jpg" alt="Юрист правового центра Юмида" /></div>
+                        <div class="team-photo team-photo-a"><img src="images/Team%201.jpeg" alt="Юрист Миляуша" /></div>
                         <div class="team-meta">
-                            <h4>Ведущий юрист</h4>
-                            <p>Семейные, наследственные споры, суд.</p>
+                            <h4>Юрист Миляуша</h4>
+                            <p>Имущественные, земельные, жилищные споры, взыскание ДТП</p>
                         </div>
                     </article>
                     <article class="team-card">
-                        <div class="team-photo team-photo-b"><img src="images/team-2.jpg" alt="Юрист правового центра Юмида" /></div>
+                        <div class="team-photo team-photo-b"><img src="images/team-2.jpg" alt="Юрист Людмила" /></div>
                         <div class="team-meta">
-                            <h4>Юрист центра</h4>
-                            <p>Договоры, потребители, арбитраж.</p>
+                            <h4>Юрист Людмила</h4>
+                            <p>Семейные споры, споры о детях, взыскание задолженности</p>
+                        </div>
+                    </article>
+                    <article class="team-card">
+                        <div class="team-photo team-photo-c"><img src="images/Team%203.jpg" alt="Юрист Ксения" /></div>
+                        <div class="team-meta">
+                            <h4>Юрист Ксения</h4>
+                            <p>Арбитраж, договоры, защита прав потребителей</p>
                         </div>
                     </article>
             </div>
