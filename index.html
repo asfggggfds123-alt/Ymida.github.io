@@ -37,7 +37,7 @@
                 },
                 "areaServed": ["Набережные Челны", "Казань", "Нижнекамск", "Елабуга", "Альметьевск", "Заинск", "Республика Татарстан"],
                 "openingHours": "Mo-Fr 09:00-18:00",
-                "priceRange": "от 5000 RUB"
+                "priceRange": "от 1500 RUB"
             },
             {
                 "@type": "FAQPage",
@@ -77,6 +77,7 @@
             --navy: #1c2430;
             --shadow: 0 14px 40px rgba(143, 100, 28, 0.16);
             --border-light: rgba(143, 100, 28, 0.14);
+            --header-h: 102px;
         }
         html { scroll-behavior: smooth; overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         body {
@@ -90,6 +91,7 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             max-width: 100%;
+            padding-top: var(--header-h);
         }
         img, svg, video { max-width: 100%; height: auto; }
         body::before {
@@ -199,13 +201,18 @@
         .delay-8 { transition-delay: 0.64s; }
 
         header {
-            padding: 16px 0;
+            padding: calc(16px + env(safe-area-inset-top, 0px)) 0 16px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: rgba(234, 217, 192, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(234, 217, 192, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 6px 24px rgba(31, 26, 20, 0.08);
+            z-index: 1000;
         }
         .header-inner {
             display: flex;
@@ -919,7 +926,7 @@
             min-width: 0;
         }
         .prices-layout > * { min-width: 0; }
-        .prices-side { position: sticky; top: 100px; }
+        .prices-side { position: sticky; top: calc(var(--header-h) + 16px); }
         .prices-side .img-tile { margin-bottom: 20px; }
         .team-grid {
             display: grid;
@@ -1165,10 +1172,11 @@
             .team-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
+            :root { --header-h: 80px; }
             .container { padding: 0 16px; }
             .header-inner { padding-right: 56px; gap: 12px; min-height: 56px; }
             .logo img { height: 48px; }
-            .nav-toggle { top: max(10px, env(safe-area-inset-top, 0px)); right: 12px; }
+            .nav-toggle { top: max(10px, calc(10px + env(safe-area-inset-top, 0px))); right: 12px; z-index: 1001; }
             .hero { min-height: auto; padding: 36px 0 28px; }
             .hero-text h1 { font-size: 28px; }
             .hero-sub { font-size: 17px; }
@@ -1379,7 +1387,7 @@
         <div class="container">
             <div class="block-panel anim">
             <h2>Стоимость юридических услуг</h2>
-            <p class="highlight">Фиксированная цена до договора. Без скрытых платежей. Консультация от 5 000 ₽, ведение дела в суде от 30 000 ₽.</p>
+            <p class="highlight">Фиксированная цена до договора. Без скрытых платежей. Консультация от 1 500 ₽, ведение дела в суде от 15 000 ₽.</p>
             <div class="prices-layout">
                 <aside class="prices-side">
                     <figure class="img-tile">
@@ -1400,6 +1408,7 @@
                     <table class="price-table">
                         <thead><tr><th>Услуга</th><th>Стоимость</th></tr></thead>
                         <tbody>
+                            <tr><td>Первичная консультация</td><td>от 1 500 ₽</td></tr>
                             <tr><td>Письменная проработка вопроса (юридическое заключение)</td><td>от 5 000 ₽</td></tr>
                             <tr><td>Анализ документов с выездом к клиенту</td><td>от 7 000 ₽</td></tr>
                         </tbody>
@@ -1426,7 +1435,7 @@
                         <thead><tr><th>Услуга</th><th>Стоимость</th></tr></thead>
                         <tbody>
                             <tr><td>Подготовка искового заявления</td><td>от 10 000 ₽</td></tr>
-                            <tr><td>Ведение дела в суде 1-й инстанции</td><td>от 30 000 ₽</td></tr>
+                            <tr><td>Ведение дела в суде 1-й инстанции</td><td>от 15 000 ₽</td></tr>
                             <tr><td>Ведение дела в апелляции / кассации</td><td>от 25 000 ₽</td></tr>
                             <tr><td>Отмена заочного решения</td><td>от 15 000 ₽</td></tr>
                         </tbody>
