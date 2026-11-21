@@ -6,10 +6,10 @@
     <title>Юридические услуги в Набережных Челнах и Татарстане — правовой центр «Юмида»</title>
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="apple-touch-icon" href="favicon.png?v=3" />
-    <meta name="description" content="Правовой центр «Юмида» — опытные юристы в Набережных Челнах с 20-летней практикой. Семейные, наследственные, земельные, пенсионные споры, ДТП, арбитраж. Фиксированные цены, более 95% положительных результатов." />
+    <meta name="description" content="Правовой центр «Юмида» в Набережных Челнах. Семейные, наследственные и земельные споры, договоры и арбитраж. Консультация 1 500 ₽, ведение дела от 15 000 ₽." />
     <meta name="keywords" content="юрист Набережные Челны, юридические услуги Татарстан, правовой центр Юмида, семейные споры, наследство, земельные споры, ДТП, арбитраж" />
     <meta property="og:title" content="Юридические услуги в Набережных Челнах — правовой центр «Юмида»" />
-    <meta property="og:description" content="Опытные юристы с 20-летней практикой. Защита в суде, фиксированные цены, работа по всей Республике Татарстан." />
+    <meta property="og:description" content="Правовой центр «Юмида» в Набережных Челнах. Семейные, наследственные и земельные споры, договоры и арбитраж. Консультация 1 500 ₽, ведение дела от 15 000 ₽." />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:image" content="logo.png?v=3" />
     <link rel="canonical" href="/" />
@@ -760,7 +760,7 @@
         }
         .contact-item a:hover { color: var(--gold); }
         .contact-form { display: flex; flex-direction: column; gap: 20px; width: 100%; min-width: 0; }
-        .contact-form input, .contact-form textarea {
+        .contact-form input, .contact-form textarea, .contact-form select {
             width: 100%;
             max-width: 100%;
             min-width: 0;
@@ -773,7 +773,8 @@
             font-family: 'Inter', sans-serif;
             transition: 0.3s;
         }
-        .contact-form input:focus, .contact-form textarea:focus {
+        .contact-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #8a7350 50%), linear-gradient(135deg, #8a7350 50%, transparent 50%); background-position: calc(100% - 22px) 22px, calc(100% - 16px) 22px; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
             outline: none;
             border-color: var(--gold);
             box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.15);
@@ -1237,7 +1238,7 @@
             .logo img { height: 44px; }
             .block-panel { padding: 20px 12px 16px; }
             .geo-list span { font-size: 13px; padding: 6px 12px; }
-            .contact-form input, .contact-form textarea { padding: 14px 14px; }
+            .contact-form input, .contact-form textarea, .contact-form select { padding: 14px 14px; }
         }
         @media (hover: none) {
             .service-card:hover, .team-card:hover, .advantage-item:hover, .btn-primary:hover {
@@ -1276,12 +1277,12 @@
                     <a href="#faq">Вопросы</a>
                     <a href="#contact">Контакты</a>
                 </nav>
-                <a class="header-phone copy-phone" href="tel:+79063229333" data-phone="+79063229333" title="Нажмите, чтобы скопировать номер">+7 (906) 322-93-33</a>
+                <a class="header-phone copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">+7 (906) 322-93-33</a>
                 <div class="header-messengers" aria-label="Мессенджеры">
-                    <a href="https://max.ru/u/f9LHodD0cOLXxyk2r3Dbf8MwTvXlQ-OnUwMfm3aunht6aWm54ycBamaEMI4" target="_blank" rel="noopener noreferrer" title="MAX" aria-label="MAX"><i class="fas fa-comment-dots"></i></a>
-                    <a href="https://t.me/Umidacentr" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-                    <a href="https://wa.me/79063229333" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://vk.ru/club240774245" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://max.ru/u/f9LHodD0cOLXxyk2r3Dbf8MwTvXlQ-OnUwMfm3aunht6aWm54ycBamaEMI4" data-goal="max_click" target="_blank" rel="noopener noreferrer" title="MAX" aria-label="MAX"><i class="fas fa-comment-dots"></i></a>
+                    <a href="https://t.me/Umidacentr" data-goal="telegram_click" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79063229333" data-goal="whatsapp_click" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://vk.ru/club240774245" data-goal="vk_click" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
                 </div>
             </div>
         </div>
@@ -1304,8 +1305,8 @@
                 <p>Правовой центр «Юмида» представляет интересы в судах всех инстанций Республики Татарстан: семейные и наследственные споры, защита прав потребителей, договоры и переговоры.</p>
                 <p>Называем стоимость до начала работы и не требуем доплат в процессе. Вопрос можно задать по телефону или в мессенджере.</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-primary">Получить консультацию</a>
-                    <button type="button" class="btn-ghost copy-phone" data-phone="+79063229333" title="Нажмите, чтобы скопировать номер"><i class="fas fa-phone-alt"></i> +7 (906) 322-93-33</button>
+                    <a href="#contact" class="btn-primary" data-goal="cta_click">Получить консультацию</a>
+                    <a class="btn-ghost copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">Позвонить: +7 (906) 322-93-33</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1664,7 +1665,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <button type="button" class="copy-phone" data-phone="+79063229333" title="Нажмите, чтобы скопировать номер">+7 (906) 322-93-33</button>
+                        <a class="copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">+7 (906) 322-93-33</a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
@@ -1681,9 +1682,19 @@
                 </div>
                 <form class="contact-form anim-right" id="contactForm" method="POST">
                     <input type="text" name="name" id="form-name" placeholder="Ваше имя" required />
-                    <input type="email" name="email" id="form-email" placeholder="Ваш Email" required />
-                    <input type="tel" name="phone" id="form-phone" placeholder="Ваш телефон" />
-                    <textarea name="message" id="form-message" placeholder="Сообщение"></textarea>
+                    <input type="tel" name="phone" id="form-phone" placeholder="Ваш телефон" required />
+                    <input type="text" name="city" id="form-city" placeholder="Город" required />
+                    <select name="case" id="form-case" required>
+                        <option value="">Тип дела</option>
+                        <option>Семейный спор</option>
+                        <option>Наследство</option>
+                        <option>Земля</option>
+                        <option>Застройщик</option>
+                        <option>Арбитраж</option>
+                        <option>Другое</option>
+                    </select>
+                    <textarea name="message" id="form-message" placeholder="Коротко опишите ситуацию" required></textarea>
+                    <input type="email" name="email" id="form-email" placeholder="Ваш Email" />
                     <label class="consent">
                         <input type="checkbox" name="agree" required />
                         <span>Я согласен(а) с <a href="docs/politika-konfidencialnosti.docx" download="Politika_konfidencialnosti_Yumida.docx">обработкой персональных данных</a> и ознакомлен(а) с политикой конфиденциальности.</span>
@@ -1738,9 +1749,19 @@
             <p class="lead-modal-text">Напишите, с чем нужна помощь — ответим в рабочее время.</p>
             <form class="contact-form" id="leadForm">
                 <input type="text" name="name" id="lead-name" placeholder="Ваше имя" required />
-                <input type="email" name="email" id="lead-email" placeholder="Ваш Email" required />
-                <input type="tel" name="phone" id="lead-phone" placeholder="Ваш телефон" />
-                <textarea name="message" id="lead-message" placeholder="Сообщение"></textarea>
+                <input type="tel" name="phone" id="lead-phone" placeholder="Ваш телефон" required />
+                <input type="text" name="city" id="lead-city" placeholder="Город" required />
+                <select name="case" id="lead-case" required>
+                    <option value="">Тип дела</option>
+                    <option>Семейный спор</option>
+                    <option>Наследство</option>
+                    <option>Земля</option>
+                    <option>Застройщик</option>
+                    <option>Арбитраж</option>
+                    <option>Другое</option>
+                </select>
+                <textarea name="message" id="lead-message" placeholder="Коротко опишите ситуацию" required></textarea>
+                <input type="email" name="email" id="lead-email" placeholder="Ваш Email" />
                 <label class="consent">
                     <input type="checkbox" name="agree" required />
                     <span>Я согласен(а) с <a href="docs/politika-konfidencialnosti.docx" download="Politika_konfidencialnosti_Yumida.docx">обработкой персональных данных</a> и ознакомлен(а) с политикой конфиденциальности.</span>
@@ -1786,11 +1807,21 @@
             const socialDropdown = document.getElementById('socialDropdown');
             const socials = (typeof siteContent !== 'undefined' && siteContent.socials) ? siteContent.socials : [];
             socialDropdown.innerHTML = '';
+            function goalByHref(href) {
+                if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1) return 'whatsapp_click';
+                if (href.indexOf('t.me/') !== -1 || href.indexOf('telegram.') !== -1) return 'telegram_click';
+                if (href.indexOf('max.ru') !== -1) return 'max_click';
+                if (href.indexOf('vk.ru/club') !== -1 || href.indexOf('vk.com/club') !== -1) return 'vk_click';
+                if (href.indexOf('tel:') === 0) return 'phone_click';
+                return '';
+            }
             socials.forEach(item => {
                 const a = document.createElement('a');
                 a.href = item.link;
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
+                const goal = goalByHref(item.link);
+                if (goal) a.setAttribute('data-goal', goal);
                 a.innerHTML = '<i class="' + item.icon + '"></i> ' + item.name;
                 socialDropdown.appendChild(a);
             });
@@ -1825,15 +1856,29 @@
                 }
                 return copied;
             }
-            document.querySelectorAll('.copy-phone').forEach(el => {
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const phone = this.getAttribute('data-phone') || '+79063229333';
-                    copyToClipboard(phone);
-                    if (!toast) return;
-                    toast.classList.add('show');
-                    setTimeout(function() { toast.classList.remove('show'); }, 1800);
-                });
+            let metricaClientId = '';
+            function reachGoal(name, params) {
+                if (typeof ym !== 'function') return;
+                if (params) ym(112267412, 'reachGoal', name, params);
+                else ym(112267412, 'reachGoal', name);
+            }
+            if (typeof ym === 'function') {
+                ym(112267412, 'getClientID', function(id) { metricaClientId = id || ''; });
+            }
+            function isMobileCall() {
+                return window.matchMedia('(pointer: coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            }
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('a[href]');
+                if (!link) return;
+                const goal = link.getAttribute('data-goal') || goalByHref(link.href);
+                if (goal) reachGoal(goal);
+                if (!link.classList.contains('copy-phone') || isMobileCall()) return;
+                e.preventDefault();
+                copyToClipboard(link.getAttribute('data-phone') || '+79063229333');
+                if (!toast) return;
+                toast.classList.add('show');
+                setTimeout(function() { toast.classList.remove('show'); }, 1800);
             });
 
             const leadModal = document.getElementById('leadModal');
@@ -1878,14 +1923,29 @@
                     status.style.display = 'none';
                     btn.disabled = true;
                     btn.textContent = 'Отправка...';
+                    const caseName = document.getElementById(ids.case).value;
+                    const cityName = document.getElementById(ids.city).value;
+                    const query = new URLSearchParams(location.search);
                     fetch('https://formsubmit.co/ajax/Umida.centr@gmail.com', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({
                             name: document.getElementById(ids.name).value,
-                            email: document.getElementById(ids.email).value,
                             phone: document.getElementById(ids.phone).value,
-                            message: document.getElementById(ids.message).value
+                            city: cityName,
+                            case: caseName,
+                            message: document.getElementById(ids.message).value,
+                            email: document.getElementById(ids.email).value,
+                            page: location.href,
+                            referrer: document.referrer || '',
+                            utm_source: query.get('utm_source') || '',
+                            utm_medium: query.get('utm_medium') || '',
+                            utm_campaign: query.get('utm_campaign') || '',
+                            utm_content: query.get('utm_content') || '',
+                            utm_term: query.get('utm_term') || '',
+                            yclid: query.get('yclid') || '',
+                            metrica_client_id: metricaClientId,
+                            _subject: 'Заявка Юмида: ' + (caseName || 'без типа') + ', ' + (cityName || 'город не указан')
                         })
                     })
                     .then(response => {
@@ -1894,6 +1954,7 @@
                     })
                     .then(data => {
                         if (data.success === 'true' || data.message) {
+                            reachGoal('form_lead', { case: caseName, city: cityName });
                             status.className = 'form-status success';
                             status.textContent = 'Заявка отправлена! Мы свяжемся с вами.';
                             form.reset();
@@ -1917,12 +1978,12 @@
                 });
             }
             bindLeadForm(document.getElementById('contactForm'), {
-                name: 'form-name', email: 'form-email', phone: 'form-phone',
-                message: 'form-message', status: 'form-status', submit: 'form-submit'
+                name: 'form-name', phone: 'form-phone', city: 'form-city', case: 'form-case',
+                message: 'form-message', email: 'form-email', status: 'form-status', submit: 'form-submit'
             });
             bindLeadForm(document.getElementById('leadForm'), {
-                name: 'lead-name', email: 'lead-email', phone: 'lead-phone',
-                message: 'lead-message', status: 'lead-status', submit: 'lead-submit'
+                name: 'lead-name', phone: 'lead-phone', city: 'lead-city', case: 'lead-case',
+                message: 'lead-message', email: 'lead-email', status: 'lead-status', submit: 'lead-submit'
             });
         });
     </script>
