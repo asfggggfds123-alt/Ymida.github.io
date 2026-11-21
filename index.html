@@ -1277,12 +1277,12 @@
                     <a href="#faq">Вопросы</a>
                     <a href="#contact">Контакты</a>
                 </nav>
-                <a class="header-phone copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">+7 (906) 322-93-33</a>
+                <a class="header-phone copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click" data-place="шапка">+7 (906) 322-93-33</a>
                 <div class="header-messengers" aria-label="Мессенджеры">
-                    <a href="https://max.ru/u/f9LHodD0cOLXxyk2r3Dbf8MwTvXlQ-OnUwMfm3aunht6aWm54ycBamaEMI4" data-goal="max_click" target="_blank" rel="noopener noreferrer" title="MAX" aria-label="MAX"><i class="fas fa-comment-dots"></i></a>
-                    <a href="https://t.me/Umidacentr" data-goal="telegram_click" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-                    <a href="https://wa.me/79063229333" data-goal="whatsapp_click" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://vk.ru/club240774245" data-goal="vk_click" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://max.ru/u/f9LHodD0cOLXxyk2r3Dbf8MwTvXlQ-OnUwMfm3aunht6aWm54ycBamaEMI4" data-goal="max_click" data-place="шапка" target="_blank" rel="noopener noreferrer" title="MAX" aria-label="MAX"><i class="fas fa-comment-dots"></i></a>
+                    <a href="https://t.me/Umidacentr" data-goal="telegram_click" data-place="шапка" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79063229333" data-goal="whatsapp_click" data-place="шапка" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://vk.ru/club240774245" data-goal="vk_click" data-place="шапка" target="_blank" rel="noopener noreferrer" title="Сообщество ВКонтакте «Правовой Центр Юмида»" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
                 </div>
             </div>
         </div>
@@ -1305,8 +1305,8 @@
                 <p>Правовой центр «Юмида» представляет интересы в судах всех инстанций Республики Татарстан: семейные и наследственные споры, защита прав потребителей, договоры и переговоры.</p>
                 <p>Называем стоимость до начала работы и не требуем доплат в процессе. Вопрос можно задать по телефону или в мессенджере.</p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-primary" data-goal="cta_click">Получить консультацию</a>
-                    <a class="btn-ghost copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">Позвонить: +7 (906) 322-93-33</a>
+                    <a href="#contact" class="btn-primary" data-goal="cta_click" data-place="экран">Получить консультацию</a>
+                    <a class="btn-ghost copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click" data-place="экран">Позвонить: +7 (906) 322-93-33</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1665,7 +1665,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <a class="copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click">+7 (906) 322-93-33</a>
+                        <a class="copy-phone" href="tel:+79063229333" data-phone="+79063229333" data-goal="phone_click" data-place="контакты">+7 (906) 322-93-33</a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
@@ -1673,7 +1673,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:Umida.centr@gmail.com">Umida.centr@gmail.com</a>
+                        <a href="mailto:Umida.centr@gmail.com" data-goal="email_click" data-place="контакты">Umida.centr@gmail.com</a>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-comment-dots"></i>
@@ -1813,6 +1813,7 @@
                 if (href.indexOf('max.ru') !== -1) return 'max_click';
                 if (href.indexOf('vk.ru/club') !== -1 || href.indexOf('vk.com/club') !== -1) return 'vk_click';
                 if (href.indexOf('tel:') === 0) return 'phone_click';
+                if (href.indexOf('mailto:') === 0) return 'email_click';
                 return '';
             }
             socials.forEach(item => {
@@ -1821,7 +1822,10 @@
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
                 const goal = goalByHref(item.link);
-                if (goal) a.setAttribute('data-goal', goal);
+                if (goal) {
+                    a.setAttribute('data-goal', goal);
+                    a.setAttribute('data-place', 'меню');
+                }
                 a.innerHTML = '<i class="' + item.icon + '"></i> ' + item.name;
                 socialDropdown.appendChild(a);
             });
@@ -1872,7 +1876,13 @@
                 const link = e.target.closest('a[href]');
                 if (!link) return;
                 const goal = link.getAttribute('data-goal') || goalByHref(link.href);
-                if (goal) reachGoal(goal);
+                if (goal) {
+                    const params = {};
+                    const place = link.getAttribute('data-place');
+                    if (place) params.place = place;
+                    if (goal === 'phone_click') params.action = isMobileCall() ? 'звонок' : 'копия';
+                    reachGoal(goal, Object.keys(params).length ? params : undefined);
+                }
                 if (!link.classList.contains('copy-phone') || isMobileCall()) return;
                 e.preventDefault();
                 copyToClipboard(link.getAttribute('data-phone') || '+79063229333');
@@ -1954,7 +1964,11 @@
                     })
                     .then(data => {
                         if (data.success === 'true' || data.message) {
-                            reachGoal('form_lead', { case: caseName, city: cityName });
+                            reachGoal('form_lead', {
+                                case: caseName,
+                                city: cityName,
+                                form: form.id === 'leadForm' ? 'окно' : 'страница'
+                            });
                             status.className = 'form-status success';
                             status.textContent = 'Заявка отправлена! Мы свяжемся с вами.';
                             form.reset();
