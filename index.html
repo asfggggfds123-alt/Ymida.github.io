@@ -1254,7 +1254,7 @@
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112267412', 'ym');
-        ym(112267412, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        ym(112267412, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/112267412" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
@@ -1681,10 +1681,10 @@
                     </div>
                 </div>
                 <form class="contact-form anim-right" id="contactForm" method="POST">
-                    <input type="text" name="name" id="form-name" placeholder="Ваше имя" required />
-                    <input type="tel" name="phone" id="form-phone" placeholder="Ваш телефон" required />
-                    <input type="text" name="city" id="form-city" placeholder="Город" required />
-                    <select name="case" id="form-case" required>
+                    <input type="text" name="name" id="form-name" class="ym-disable-keys" placeholder="Ваше имя" required />
+                    <input type="tel" name="phone" id="form-phone" class="ym-disable-keys" placeholder="Ваш телефон" required />
+                    <input type="text" name="city" id="form-city" class="ym-disable-keys" placeholder="Город" required />
+                    <select name="case" id="form-case" class="ym-disable-keys" required>
                         <option value="">Тип дела</option>
                         <option>Семейный спор</option>
                         <option>Наследство</option>
@@ -1693,8 +1693,8 @@
                         <option>Арбитраж</option>
                         <option>Другое</option>
                     </select>
-                    <textarea name="message" id="form-message" placeholder="Коротко опишите ситуацию" required></textarea>
-                    <input type="email" name="email" id="form-email" placeholder="Ваш Email" />
+                    <textarea name="message" id="form-message" class="ym-disable-keys" placeholder="Коротко опишите ситуацию" required></textarea>
+                    <input type="email" name="email" id="form-email" class="ym-disable-keys" placeholder="Ваш Email" />
                     <label class="consent">
                         <input type="checkbox" name="agree" required />
                         <span>Я согласен(а) с <a href="docs/politika-konfidencialnosti.docx" download="Politika_konfidencialnosti_Yumida.docx">обработкой персональных данных</a> и ознакомлен(а) с политикой конфиденциальности.</span>
@@ -1748,10 +1748,10 @@
             <h2 id="leadModalTitle">Оставьте заявку</h2>
             <p class="lead-modal-text">Напишите, с чем нужна помощь — ответим в рабочее время.</p>
             <form class="contact-form" id="leadForm">
-                <input type="text" name="name" id="lead-name" placeholder="Ваше имя" required />
-                <input type="tel" name="phone" id="lead-phone" placeholder="Ваш телефон" required />
-                <input type="text" name="city" id="lead-city" placeholder="Город" required />
-                <select name="case" id="lead-case" required>
+                <input type="text" name="name" id="lead-name" class="ym-disable-keys" placeholder="Ваше имя" required />
+                <input type="tel" name="phone" id="lead-phone" class="ym-disable-keys" placeholder="Ваш телефон" required />
+                <input type="text" name="city" id="lead-city" class="ym-disable-keys" placeholder="Город" required />
+                <select name="case" id="lead-case" class="ym-disable-keys" required>
                     <option value="">Тип дела</option>
                     <option>Семейный спор</option>
                     <option>Наследство</option>
@@ -1760,8 +1760,8 @@
                     <option>Арбитраж</option>
                     <option>Другое</option>
                 </select>
-                <textarea name="message" id="lead-message" placeholder="Коротко опишите ситуацию" required></textarea>
-                <input type="email" name="email" id="lead-email" placeholder="Ваш Email" />
+                <textarea name="message" id="lead-message" class="ym-disable-keys" placeholder="Коротко опишите ситуацию" required></textarea>
+                <input type="email" name="email" id="lead-email" class="ym-disable-keys" placeholder="Ваш Email" />
                 <label class="consent">
                     <input type="checkbox" name="agree" required />
                     <span>Я согласен(а) с <a href="docs/politika-konfidencialnosti.docx" download="Politika_konfidencialnosti_Yumida.docx">обработкой персональных данных</a> и ознакомлен(а) с политикой конфиденциальности.</span>
@@ -1991,6 +1991,16 @@
                     });
                 });
             }
+            function bindFormStart(form) {
+                let started = false;
+                form.addEventListener('focusin', function() {
+                    if (started) return;
+                    started = true;
+                    reachGoal('form_start', {
+                        form: form.id === 'leadForm' ? 'окно' : 'страница'
+                    });
+                });
+            }
             bindLeadForm(document.getElementById('contactForm'), {
                 name: 'form-name', phone: 'form-phone', city: 'form-city', case: 'form-case',
                 message: 'form-message', email: 'form-email', status: 'form-status', submit: 'form-submit'
@@ -1999,6 +2009,8 @@
                 name: 'lead-name', phone: 'lead-phone', city: 'lead-city', case: 'lead-case',
                 message: 'lead-message', email: 'lead-email', status: 'lead-status', submit: 'lead-submit'
             });
+            bindFormStart(document.getElementById('contactForm'));
+            bindFormStart(document.getElementById('leadForm'));
         });
     </script>
 </body>
